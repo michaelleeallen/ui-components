@@ -58,7 +58,7 @@ class Field extends React.Component {
         return File;
       default:
         return Input;
-    };
+    }
   }
 
   /**
@@ -105,6 +105,8 @@ class Field extends React.Component {
       let renderOption = opt => <option value={opt.value}>{opt.label}</option>;
       options.unshift({label: '', value: ''});
       props.children = _.map(options, renderOption);
+    } else {
+      delete props.children;
     }
 
     return props;
@@ -197,7 +199,7 @@ class Field extends React.Component {
    * @returns {JSX}
    */
   render() {
-    let Control = this.getInputControl()
+    let Control = this.getInputControl();
     let props = this.getInputProps();
     let handlers = this.getEventHandlers();
     return this.props.visible? <Control ref="field" {...props} {...handlers}/> : null;
