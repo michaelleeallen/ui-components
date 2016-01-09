@@ -11,7 +11,7 @@ class FieldLabel extends React.Component {
 
   renderDescription() {
     if (this.props.description) {
-      let popover = <Popover title={this.props.descriptionTitle}>{this.props.description}</Popover>;
+      let popover = <Popover id={`${this.props.id}-description`} title={this.props.descriptionTitle}>{this.props.description}</Popover>;
       return (
         <span className="field-description">
           <OverlayTrigger
@@ -48,7 +48,7 @@ class FieldLabel extends React.Component {
           {this.props.label}
           {this.renderDescription()}
         </span>
-      )
+      );
     }
     return label;
   }

@@ -102,7 +102,7 @@ class Field extends React.Component {
 
     if (this.props.type === 'select') {
       let options = this.props.options || [];
-      let renderOption = opt => <option value={opt.value}>{opt.label}</option>;
+      let renderOption = opt => <option key={`option-${opt.value}`} value={opt.value}>{opt.label}</option>;
       options.unshift({label: '', value: ''});
       props.children = _.map(options, renderOption);
     } else {

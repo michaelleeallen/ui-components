@@ -101,7 +101,7 @@ FieldGroup.propTypes = {
   id: React.PropTypes.string.isRequired,
   type: React.PropTypes.string.isRequired,
   name: React.PropTypes.string.isRequired,
-  label: React.PropTypes.string.isRequired,
+  label: React.PropTypes.object.isRequired,
   required: React.PropTypes.bool,
   helpText: React.PropTypes.string,
   visible: React.PropTypes.bool,
