@@ -1,5 +1,4 @@
 import React from 'react';
-import renderChildren from './render-children';
 
 /**
  * Render a Form component.
@@ -7,7 +6,7 @@ import renderChildren from './render-children';
  */
  class Form extends React.Component {
    render() {
-     return <form>{renderChildren(this.props)}</form>;
+     return <form>{this.props.children}</form>;
    }
  }
 

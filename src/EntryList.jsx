@@ -3,7 +3,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import _ from 'lodash';
 import setClassNames from 'classnames';
-import renderChildren from './render-children';
 import masker from './input-masker';
 import {Button, Glyphicon} from 'react-bootstrap';
 
@@ -182,7 +181,7 @@ class EntryList extends React.Component {
     if (this.props.showForm) {
       html = (
         <div className="entrylist-form" onChange={this.handleChange}>
-          {renderChildren(this.props)}
+          {this.props.children}
           <div className="row text-right">
             <div className="col-md-12">
               <Button bsStyle="primary" onClick={this.saveEntry}>Save</Button>

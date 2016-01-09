@@ -1,7 +1,6 @@
 'use-strict';
 import React from 'react';
 import {Tabs} from 'react-bootstrap';
-import renderChildren from './render-children';
 
 class ControlledTabs extends React.Component {
 
@@ -29,10 +28,10 @@ class ControlledTabs extends React.Component {
         animation={false}
         onSelect={this.handleSelect}
         key='controlledTabbedArea'>
-        {renderChildren(this.props)}
+        {this.props.children}
       </Tabs>
     );
   }
-};
+}
 
 export default ControlledTabs;

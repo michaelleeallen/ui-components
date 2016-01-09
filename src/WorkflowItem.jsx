@@ -2,7 +2,6 @@
 import React from 'react';
 import classnames from 'classnames';
 import Tree from './Tree';
-import renderChildren from './render-children';
 import Immutable from 'immutable';
 
 /**
@@ -11,12 +10,12 @@ import Immutable from 'immutable';
  */
 class WorkflowItem extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(e){
+  handleClick(e) {
     if (!this.props.disabled) {
       e.component = this.props;
     } else {
@@ -24,7 +23,7 @@ class WorkflowItem extends React.Component {
     }
   }
 
-  render(){
+  render() {
     let liClassNames = classnames({
       inactive: !this.props.active,
       current: this.props.current,
@@ -33,17 +32,16 @@ class WorkflowItem extends React.Component {
     return (
       <li className={liClassNames} role="presentation">
         <a href="javascript:void(0)" data-disabled={this.props.disabled} onClick={this.handleClick}>{this.props.title}</a>
-        <Tree>{renderChildren(this.props)}</Tree>
+        <Tree>{this.props.children}</Tree>
       </li>
     );
   }
-
-};
+}
 
 WorkflowItem.defaultProps = {
   active: true,
   disabled: false,
-  current : false,
+  current: false,
   skip: false
 };
 

@@ -1,7 +1,6 @@
 'use-strict';
 import React from 'react';
 import {Panel} from 'react-bootstrap';
-import renderChildren from './render-children';
 
 /**
  * Returns a Bootstrap Accordion Panel (panel in a collapsible panel-group)
@@ -40,7 +39,7 @@ class AccordionPanel extends React.Component {
         className="accordion-panel"
         onClick={this.handleClick}
         header={this.getCollapseState()}>
-          {renderChildren(this.props)}
+          {this.props.children}
       </Panel>
     );
   }

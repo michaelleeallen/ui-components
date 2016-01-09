@@ -2,7 +2,6 @@
 import React from 'react';
 import Tree from './Tree';
 import WorkflowItem from './WorkflowItem';
-import renderChildren from './render-children';
 
 /**
  * Manages the flow of a user through a set of defined screens.
@@ -22,7 +21,7 @@ class Workflow extends React.Component {
       <div>
         <h4>{this.props.title}</h4>
         <Tree ref="outline">
-          {renderChildren(this.props)}
+          {this.props.children}
         </Tree>
       </div>
     );

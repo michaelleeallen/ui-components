@@ -1,7 +1,6 @@
 'use-strict';
 import React from 'react';
 import {Tab, Panel} from 'react-bootstrap';
-import renderChildren from './render-children';
 
 class ControlledTab extends React.Component {
 
@@ -12,9 +11,9 @@ class ControlledTab extends React.Component {
   render() {
     return (
       <Tab {...this.props}>
-        <Panel>{renderChildren(this.props)}</Panel>
+        <Panel>{this.props.children}</Panel>
       </Tab>
-    )
+    );
   }
 }
 

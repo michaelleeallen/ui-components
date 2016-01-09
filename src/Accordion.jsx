@@ -1,7 +1,6 @@
 'use-strict';
 import React from 'react';
 import {Accordion as RBAccordion} from 'react-bootstrap';
-import renderChildren from './render-children';
 
 /**
  * Returns a Bootstrap Accordion (panel-group supporting collapsible panels)
@@ -32,7 +31,7 @@ class Accordion extends React.Component {
         defaultActiveKey={this.props.defaultActiveKey}
         className="accordion"
         onClick={this.handleClick}>
-          {renderChildren(this.props)}
+          {this.props.children}
       </RBAccordion>
     );
   }

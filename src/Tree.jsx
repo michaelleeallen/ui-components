@@ -7,8 +7,8 @@ var React = require('react');
  */
 class Tree extends React.Component {
 
-  render(){
-    if ( this.props.children ) {
+  render() {
+    if (this.props.children) {
       return (
         <ul className="nav nav-tree">
           {this.props.children}
@@ -18,7 +18,7 @@ class Tree extends React.Component {
       return null;
     }
   }
-};
+}
 
 Tree.defaultProps = {
   componentType: 'tree'

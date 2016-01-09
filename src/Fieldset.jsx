@@ -2,7 +2,6 @@
 import React from 'react';
 import FieldLabel from './FieldLabel';
 import classnames from 'classnames';
-import renderChildren from './render-children';
 import _ from 'lodash';
 
 /**
@@ -49,12 +48,11 @@ class Fieldset extends React.Component {
       <fieldset key="fieldSetWithComponentsKey" id={this.props.id} className={this.getClassNames()}>
         {this.renderLabel()}
         {this.renderHelpText()}
-        {renderChildren(this.props)}
+        {this.props.children}
       </fieldset>
     );
   }
-
-};
+}
 
 Fieldset.propTypes = {
   title: React.PropTypes.string

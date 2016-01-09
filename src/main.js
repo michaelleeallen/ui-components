@@ -18,7 +18,7 @@ export default {
   /**
    * DEPRECATED, use Factory.build instead.
    */
-  factory: function(schema){
+  factory: function(schema) {
     return Factory.build(elements, schema, schema)[0];
   }
 };
