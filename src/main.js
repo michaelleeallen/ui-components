@@ -1,7 +1,6 @@
 'use-strict';
 import elements from './index';
 import Factory from './Factory';
-import _ from 'lodash';
 
 
 /**

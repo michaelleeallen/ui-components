@@ -1,5 +1,6 @@
 'use-strict';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {Input} from 'react-bootstrap';
 import classNames from 'classnames';
 import _ from 'lodash';
@@ -178,7 +179,7 @@ class Field extends React.Component {
     if (this.props.mask && e.keyCode === BACKSPACE) {
       e.preventDefault();
       let value = this.props.value.slice(0, -1);
-      let _div = React.findDOMNode(this);
+      let _div = ReactDOM.findDOMNode(this);
       let event = new Event('change', {bubbles: true, cancelable: true});
       event.component = {
         id: this.props.id,
