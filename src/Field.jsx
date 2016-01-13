@@ -79,6 +79,7 @@ class Field extends React.Component {
     return _.merge({
       onChange: this.handleChange,
       onBlur: this.handleBlur,
+      onKeyDown: this.handleKeyDown
     }, manualInputEvents);
   }
 
@@ -153,7 +154,7 @@ class Field extends React.Component {
       schemaUpdates.checked = e.target.checked;
     }
 
-    if (this.props.mask && this.props.value && e.keyCode !== BACKSPACE) {
+    if (this.props.mask && this.props.value) {
       let newChar = value.slice(-1);
       value = this.props.value + newChar;
     }
@@ -178,15 +179,15 @@ class Field extends React.Component {
     if (this.props.mask && e.keyCode === BACKSPACE) {
       e.preventDefault();
       let value = this.props.value.slice(0, -1);
-      let _div = ReactDOM.findDOMNode(this);
-      let event = new Event('change', {bubbles: true, cancelable: true});
-      event.component = {
+      //let _div = ReactDOM.findDOMNode(this);
+      //let event = new Event('change', {bubbles: true, cancelable: true});
+      e.component = {
         id: this.props.id,
         modelUpdates: {
           [this.props.name]: value
         }
       };
-      _div.dispatchEvent(event);
+      //_div.dispatchEvent(event);
     }
   }
 
