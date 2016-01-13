@@ -146,29 +146,33 @@ class Field extends React.Component {
     let value = e.target.value;
     let schemaUpdates = {};
 
-    // Single instance fields, where their value does not come from the 'options' or 'optionsResource', but
-    // from the 'value' and 'submitValue' props.  If the field is 'unchecked', the value is 'null', so we need to have a
-    // reference value that is not nullable to replace when 'checking' later.  For this, we use the 'submitValue' prop.
-    if (this.isRadioOrCheckbox()) {
-      value = e.target.checked? this.props.submitValue : null;
-      schemaUpdates.checked = e.target.checked;
+    // there is a chance we could have already created a component payload and
+    // do not wish to trigger a change event(see handleKeyDown)
+    if (!e.component) {
+      // Single instance fields, where their value does not come from the 'options' or 'optionsResource', but
+      // from the 'value' and 'submitValue' props.  If the field is 'unchecked', the value is 'null', so we need to have a
+      // reference value that is not nullable to replace when 'checking' later.  For this, we use the 'submitValue' prop.
+      if (this.isRadioOrCheckbox()) {
+        value = e.target.checked? this.props.submitValue : null;
+        schemaUpdates.checked = e.target.checked;
+      }
+
+      if (this.props.mask && this.props.value) {
+        let newChar = value.slice(-1);
+        value = this.props.value + newChar;
+      }
+
+      value = this.forceMaxLength(value);
+
+      e.component = {
+        id: this.props.id,
+        schemaUpdates,
+        modelUpdates: {
+          [this.props.name]: value
+        },
+        props: this.props
+      };
     }
-
-    if (this.props.mask && this.props.value) {
-      let newChar = value.slice(-1);
-      value = this.props.value + newChar;
-    }
-
-    value = this.forceMaxLength(value);
-
-    e.component = {
-      id: this.props.id,
-      schemaUpdates,
-      modelUpdates: {
-        [this.props.name]: value
-      },
-      props: this.props
-    };
   }
 
   /**
@@ -177,7 +181,7 @@ class Field extends React.Component {
    */
   handleKeyDown(e) {
     if (this.props.mask && e.keyCode === BACKSPACE) {
-      //e.preventDefault();
+      e.preventDefault();
       let value = this.props.value.slice(0, -1);
       //let _div = ReactDOM.findDOMNode(this);
       //let event = new Event('change', {bubbles: true, cancelable: true});
@@ -187,6 +191,7 @@ class Field extends React.Component {
           [this.props.name]: value
         }
       };
+      this.handleChange(e);
       //_div.dispatchEvent(event);
     }
   }
