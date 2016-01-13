@@ -78,7 +78,7 @@ class Field extends React.Component {
     } : {};
     return _.merge({
       onChange: this.handleChange,
-      onBlur: this.handleBlur,      
+      onBlur: this.handleBlur,
     }, manualInputEvents);
   }
 
@@ -153,7 +153,7 @@ class Field extends React.Component {
       schemaUpdates.checked = e.target.checked;
     }
 
-    if (this.props.mask && this.props.value) {
+    if (this.props.mask && this.props.value && e.keyCode !== BACKSPACE) {
       let newChar = value.slice(-1);
       value = this.props.value + newChar;
     }
