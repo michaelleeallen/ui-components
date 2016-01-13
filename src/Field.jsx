@@ -78,8 +78,7 @@ class Field extends React.Component {
     } : {};
     return _.merge({
       onChange: this.handleChange,
-      onBlur: this.handleBlur,
-      onKeyDown: this.handleKeyDown
+      onBlur: this.handleBlur,      
     }, manualInputEvents);
   }
 
