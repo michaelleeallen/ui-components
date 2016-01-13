@@ -177,7 +177,7 @@ class Field extends React.Component {
    */
   handleKeyDown(e) {
     if (this.props.mask && e.keyCode === BACKSPACE) {
-      e.preventDefault();
+      //e.preventDefault();
       let value = this.props.value.slice(0, -1);
       //let _div = ReactDOM.findDOMNode(this);
       //let event = new Event('change', {bubbles: true, cancelable: true});
